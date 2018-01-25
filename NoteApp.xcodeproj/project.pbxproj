@@ -21,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F1167DB42019C6AA00BEB3ED /* NoteModel 3.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NoteModel 3.0.xcdatamodel"; sourceTree = "<group>"; };
 		F19DB3121FEA4F160000568E /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
 		F19DB3131FEA4F160000568E /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
 		F19DB3151FEBC2970000568E /* NoteModel 2.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "NoteModel 2.0.xcdatamodel"; sourceTree = "<group>"; };
@@ -358,10 +359,11 @@
 		F1AC7A761FE93AA80012C8B9 /* NoteModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				F1167DB42019C6AA00BEB3ED /* NoteModel 3.0.xcdatamodel */,
 				F19DB3151FEBC2970000568E /* NoteModel 2.0.xcdatamodel */,
 				F1AC7A771FE93AA80012C8B9 /* NoteModel.xcdatamodel */,
 			);
-			currentVersion = F19DB3151FEBC2970000568E /* NoteModel 2.0.xcdatamodel */;
+			currentVersion = F1167DB42019C6AA00BEB3ED /* NoteModel 3.0.xcdatamodel */;
 			path = NoteModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -86,6 +86,10 @@
     NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Note" ];
     //NSFetchRequest *request1 = [NSFetchRequest fetchRequestWithEntityName:@"Note"]; // 跟上面一行相同
     
+    //根據sort排序，由大到小
+    NSSortDescriptor *Sort = [NSSortDescriptor sortDescriptorWithKey:@"sort" ascending:NO];
+    [request setSortDescriptors:@[Sort]];
+    
     NSError *error = nil;
     NSArray *results = [coreData.managedObjectContext executeFetchRequest:request error:&error];
     if(error){
@@ -188,6 +192,7 @@
     Note *note = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:coreData.managedObjectContext];
     note.text = @"New Note";
     note.noteID = [[NSUUID UUID] UUIDString];
+    note.sort = self.data.count;
     [self.data insertObject:note atIndex:0];
     [self saveToCoreData];
     
@@ -266,14 +271,25 @@
 
 }
 
--(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
-    
-    Note *note = self.data [sourceIndexPath.row];
+-(void) tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
+    Note *note = self.data[sourceIndexPath.row];
     //刪除原本位置
     [self.data removeObjectAtIndex:sourceIndexPath.row];
-    //放到新的位置
+    //放到新位置
     [self.data insertObject:note atIndex:destinationIndexPath.row];
-    
+    if(destinationIndexPath.row == 0){
+        Note *firstNode = self.data[1];
+        note.sort = firstNode.sort+self.data.count;
+    }else if (destinationIndexPath.row == self.data.count-1){
+        Note *lastNode = self.data[destinationIndexPath.row-1];
+        note.sort = lastNode.sort-1;
+    }else{
+        Note *previousNode = self.data[destinationIndexPath.row-1];
+        Note *afterNode = self.data[destinationIndexPath.row+1];
+        note.sort = (previousNode.sort + afterNode.sort)/2;
+        NSLog(@"%f",note.sort);
+    }
+    [[CoreDataHelper sharedInstance].managedObjectContext save:nil];
 }
 
 //-----------------------------------------------------------------------

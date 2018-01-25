@@ -13,7 +13,9 @@
 @dynamic noteID;
 @dynamic text;
 @dynamic imageName;
+@dynamic sort;
 
+/* Archiving
 //物件到檔案：把物件狀態存到aCoder encoder=編碼
 - (void)encodeWithCoder:(nonnull NSCoder *)aCoder {
     
@@ -31,7 +33,8 @@
     }
     return self;
 }
-
+*/
+ 
 - (instancetype)init
 {
     self = [super init];
@@ -64,11 +67,11 @@
     //CGContextRef context = UIGraphicsGetCurrentContext();
     //CGContextSaveGState(context); // 可以不需要
     
-    /*圓形或方形的控制
+    //圓形或方形的控制
     //for student if have time, create a circle
     UIBezierPath *circlePath = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, thumbnailSize.width, thumbnailSize.height)];
     [circlePath addClip];
-    */
+    
     
     //計算長寬要縮圖比例，取最大值MAX會變成UIViewContentModeScaleAspectFill
     //最小值MIN會變成UIViewContentModeScaleAspectFit

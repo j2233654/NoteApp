@@ -16,6 +16,7 @@
 @interface Note : NSManagedObject
 
 //@property (nonatomic) UIImage* image;
+@property (nonatomic) float sort;
 @property (nonatomic) NSString *text;
 @property (nonatomic) NSString *noteID;
 @property (nonatomic) NSString *imageName;
